@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice : Les verbes au futur</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        
+        .instructions {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .question {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #764ba2;
+        }
+        
+        .question-text {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .verb-hint {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 1em;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: none;
+        }
+        
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+        
+        button {
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .check-btn {
+            background: #667eea;
+            color: white;
+        }
+        
+        .check-btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .reset-btn {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .reset-btn:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.4);
+        }
+        
+        .score {
+            text-align: center;
+            font-size: 1.3em;
+            margin-top: 20px;
+            color: #667eea;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Exercice : Les verbes au futur</h1>
+        <p class="subtitle">Conjuguez les verbes entre parenthèses au futur simple</p>
+        
+        <div class="instructions">
+            <strong>📝 Instructions :</strong> Complétez chaque phrase en conjuguant le verbe indiqué au futur simple. 
+            N'oubliez pas les accents et vérifiez l'orthographe !
+        </div>
+
+        <div class="question">
+            <p class="question-text">
+                1. Demain, je <span class="verb-hint">(aller)</span> au cinéma avec mes amis.
+            </p>
+            <input type="text" id="q1" placeholder="Écrivez votre réponse ici...">
+            <div class="result" id="r1"></div>
+        </div>
+
+        <div class="question">
+            <p class="question-text">
+                2. Tu <span class="verb-hint">(avoir)</span> beaucoup de travail la semaine prochaine.
+            </p>
+            <input type="text" id="q2" placeholder="Écrivez votre réponse ici...">
+            <div class="result" id="r2"></div>
+        </div>
+
+        <div class="question">
+            <p class="question-text">
+                3. Nous <span class="verb-hint">(partir)</span> en vacances cet été en Espagne.
+            </p>
+            <input type="text" id="q3" placeholder="Écrivez votre réponse ici...">
+            <div class="result" id="r3"></div>
+        </div>
+
+        <div class="question">
+            <p class="question-text">
+                4. Les élèves <span class="verb-hint">(finir)</span> leurs devoirs avant le week-end.
+            </p>
+            <input type="text" id="q4" placeholder="Écrivez votre réponse ici...">
+            <div class="result" id="r4"></div>
+        </div>
+
+        <div class="question">
+            <p class="question-text">
+                5. Elle <span class="verb-hint">(pouvoir)</span> nous rejoindre après son cours de danse.
+            </p>
+            <input type="text" id="q5" placeholder="Écrivez votre réponse ici...">
+            <div class="result" id="r5"></div>
+        </div>
+
+        <div class="question">
+            <p class="question-text">
+                6. Vous <span class="verb-hint">(faire)</span> un excellent voyage en Italie.
+            </p>
+            <input type="text" id="q6" placeholder="Écrivez votre réponse ici...">
+            <div class="result" id="r6"></div>
+        </div>
+
+        <div class="question">
+            <p class="question-text">
+                7. Ils <span class="verb-hint">(venir)</span> nous rendre visite pendant les vacances.
+            </p>
+            <input type="text" id="q7" placeholder="Écrivez votre réponse ici...">
+            <div class="result" id="r7"></div>
+        </div>
+
+        <div class="question">
+            <p class="question-text">
+                8. On <span class="verb-hint">(être)</span> en retard si on ne part pas maintenant.
+            </p>
+            <input type="text" id="q8" placeholder="Écrivez votre réponse ici...">
+            <div class="result" id="r8"></div>
+        </div>
+
+        <div class="buttons">
+            <button class="check-btn" onclick="checkAnswers()">✓ Vérifier</button>
+            <button class="reset-btn" onclick="resetExercise()">↻ Recommencer</button>
+        </div>
+
+        <div class="score" id="score"></div>
+    </div>
+
+    <script>
+        const answers = {
+            q1: "irai",
+            q2: "auras",
+            q3: "partirons",
+            q4: "finiront",
+            q5: "pourra",
+            q6: "ferez",
+            q7: "viendront",
+            q8: "sera"
+        };
+
+        function normalizeText(text) {
+            return text.trim().toLowerCase();
+        }
+
+        function checkAnswers() {
+            let score = 0;
+            let total = Object.keys(answers).length;
+
+            for (let key in answers) {
+                const userAnswer = normalizeText(document.getElementById(key).value);
+                const correctAnswer = normalizeText(answers[key]);
+                const resultDiv = document.getElementById('r' + key.substring(1));
+
+                if (userAnswer === correctAnswer) {
+                    resultDiv.className = 'result correct';
+                    resultDiv.textContent = '✓ Correct ! La réponse est : ' + answers[key];
+                    resultDiv.style.display = 'block';
+                    score++;
+                } else if (userAnswer === '') {
+                    resultDiv.className = 'result incorrect';
+                    resultDiv.textContent = '✗ Veuillez entrer une réponse.';
+                    resultDiv.style.display = 'block';
+                } else {
+                    resultDiv.className = 'result incorrect';
+                    resultDiv.textContent = '✗ Incorrect. La bonne réponse est : ' + answers[key];
+                    resultDiv.style.display = 'block';
+                }
+            }
+
+            const scoreDiv = document.getElementById('score');
+            scoreDiv.textContent = `Score : ${score} / ${total} (${Math.round((score/total)*100)}%)`;
+            scoreDiv.style.display = 'block';
+
+            if (score === total) {
+                scoreDiv.textContent += ' 🎉 Parfait !';
+            } else if (score >= total * 0.7) {
+                scoreDiv.textContent += ' 👏 Très bien !';
+            } else if (score >= total * 0.5) {
+                scoreDiv.textContent += ' 👍 Bien, continuez vos efforts !';
+            } else {
+                scoreDiv.textContent += ' 💪 Révisez encore un peu !';
+            }
+        }
+
+        function resetExercise() {
+            for (let key in answers) {
+                document.getElementById(key).value = '';
+                const resultDiv = document.getElementById('r' + key.substring(1));
+                resultDiv.style.display = 'none';
+            }
+            document.getElementById('score').style.display = 'none';
+        }
+
+        // Permettre la validation avec la touche Entrée
+        document.querySelectorAll('input[type="text"]').forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    checkAnswers();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
